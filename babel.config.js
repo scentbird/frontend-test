@@ -12,7 +12,7 @@ module.exports = (api) => {
               'not dead',
             ],
           },
-          useBuiltIns: 'entry',
+          useBuiltIns: 'usage',
           corejs: '3',
         },
       ],
