@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV === 'production'
 const basePath = (file) => path.resolve(process.cwd(), file)
+const api = 'https://api.scentbird.com'
 
 const base = {
   entry: {
@@ -90,5 +91,19 @@ else {
   module.exports = merge(base, {
     mode: 'development',
     devtool: 'cheap-module-source-map',
+    devServer: {
+      historyApiFallback: true,
+      proxy: {
+        '/graphql': {
+          target: api,
+          changeOrigin: true,
+          onProxyReq: (proxyReq) => {
+            if (proxyReq.getHeader('origin')) {
+              proxyReq.setHeader('origin', api)
+            }
+          },
+        },
+      },
+    },
   })
 }

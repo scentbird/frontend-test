@@ -74,7 +74,7 @@
 
 2. (ДОП) Использовать реальные данные для страницы продукта из публичного graphql.
 
-Endpoint: `https://api.scentbird.com/graphql`
+Endpoint: `https://api.scentbird.com/graphql`. Для обхода CORS, используйте webpack-прокси по адресу `/graphql`.
 
 Пример запроса продукта:
 ```graphql
